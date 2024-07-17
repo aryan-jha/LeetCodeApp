@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.example.leetcode.Screens.HomeScreen
 import com.example.leetcode.Screens.ProfileScreen
 import com.example.leetcode.ViewModel.ProfileViewModel
@@ -39,7 +40,10 @@ class MainActivity : ComponentActivity() {
                                 HomeScreen(viewModel,navController)
                             }
                             composable<profileScreen> {
-                                ProfileScreen(viewModel,navController)
+
+                                val args = it.toRoute<profileScreen>()
+
+                                ProfileScreen(viewModel,navController,args.username)
                             }
                         }
 
